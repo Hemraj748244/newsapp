@@ -9,18 +9,16 @@ export default class App extends Component {
       language: 'en',
     };
   }
-
+  handleSetting = (cate, lang) => {
+    this.setState({
+      category: cate,
+      language: lang,
+    });
+  };
   render() {
     return (
       <div>
-        <Navbar
-          settings={(cate, lang) => {
-            this.setState({
-              category: cate,
-              language: lang,
-            });
-          }}
-        />
+        <Navbar settings={this.handleSetting} />
         <News category="top" language="hi" />
       </div>
     );

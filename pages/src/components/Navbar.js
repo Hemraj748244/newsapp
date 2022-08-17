@@ -9,18 +9,11 @@ export default class Navbar extends Component {
     };
   }
 
-  handleChange = (e) => {
-    this.setState({ lang: e.target.value });
-    console.log('Changed');
-    console.log(this.state.lang);
-  };
   render() {
     return (
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            Apna Samachar
-          </a>
+          <span className="navbar-brand">Apna Samachar</span>
           <button
             className="navbar-toggler"
             type="button"
@@ -35,116 +28,128 @@ export default class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link active"
                   aria-current="page"
-                  href="/"
-                  onClick={this.setState({ type: 'top' })}
+                  onClick={() => {
+                    this.setState({ type: 'top' });
+                    this.props.settings(this.state.type, this.state.lang);
+                  }}
                 >
                   Home
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'business' })}
+                  onClick={() => {
+                    this.setState({ type: 'business' });
+                    this.props.settings(this.state.type, this.state.lang);
+                    console.log(this.state.type + this.state.lang);
+                  }}
                 >
                   Business
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'entertainment' })}
+                  onClick={() => {
+                    this.setState({ type: 'entertainment' });
+                    this.props.settings(this.state.type, this.state.lang);
+                  }}
                 >
                   Entertainment
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'environment' })}
+                  onClick={() => {
+                    this.setState({ type: 'environment' });
+                    this.props.settings(this.state.type, this.state.lang);
+                    console.log(this.state.type + this.state.lang);
+                  }}
                 >
                   Environment
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'food' })}
+                  onClick={() => {
+                    this.setState({ type: 'food' });
+                    this.props.settings(this.state.type, this.state.lang);
+                  }}
                 >
                   Food
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'health' })}
+                  onClick={() => {
+                    this.setState({ type: 'health' });
+                    this.props.settings(this.state.type, this.state.lang);
+                  }}
                 >
                   Health
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'politics' })}
+                  onClick={() => {
+                    this.setState({ type: 'politics' });
+                    this.props.settings(this.state.type, this.state.lang);
+                  }}
                 >
                   Politics
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'science' })}
+                  onClick={() => {
+                    this.setState({ type: 'science' });
+                    this.props.settings(this.state.type, this.state.lang);
+                  }}
                 >
                   Science
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'sports' })}
+                  onClick={() => {
+                    this.setState({ type: 'sports' });
+                    this.props.settings(this.state.type, this.state.lang);
+                  }}
                 >
                   Sports
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'technology' })}
+                  onClick={() => {
+                    this.setState({ type: 'technology' });
+                    this.props.settings(this.state.type, this.state.lang);
+                  }}
                 >
                   Technology
-                </a>
+                </span>
               </li>
               <li className="nav-item">
-                <a
+                <span
                   className="nav-link"
-                  href="/"
-                  onClick={this.setState({ type: 'world' })}
+                  onClick={() => {
+                    this.setState({ type: 'world' });
+                    this.props.settings(this.state.type, this.state.lang);
+                  }}
                 >
                   World
-                </a>
-              </li>
-              <li className="nav-item dropdown justify-content-right">
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                  onChange={(event) => this.handleChange(event)}
-                >
-                  <option>en-English</option>
-                  <option>hi-Hindi</option>
-                  <option>de-France</option>
-                  <option>ge-German</option>
-                </select>
+                </span>
               </li>
             </ul>
           </div>
