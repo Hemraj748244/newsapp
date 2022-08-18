@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 export default class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: 'top',
-      lang: 'hi',
-    };
-  }
-
   render() {
     return (
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <span className="navbar-brand">Apna Samachar</span>
           <button
@@ -28,138 +20,59 @@ export default class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <link
-                  to="/"
-                  className="nav-link active"
-                  onClick={() => {
-                    this.setState({ type: 'top' });
-                    this.props.settings(this.state.type, this.state.lang);
-                  }}
-                >
+                <Link to="/" className="nav-link active">
                   Top Headlines
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/business"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'business' });
-                    this.props.settings(this.state.type, this.state.lang);
-                    console.log(this.state.type + this.state.lang);
-                  }}
-                >
+                <Link to="/business" className="nav-link">
                   Business
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/entertainment"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'entertainment' });
-                    this.props.settings(this.state.type, this.state.lang);
-                  }}
-                >
+                <Link to="/entertainment" className="nav-link">
                   Entertainment
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/environment"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'environment' });
-                    this.props.settings(this.state.type, this.state.lang);
-                    console.log(this.state.type + this.state.lang);
-                  }}
-                >
+                <Link to="/environment" className="nav-link">
                   Environment
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/food"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'food' });
-                    this.props.settings(this.state.type, this.state.lang);
-                  }}
-                >
+                <Link to="/food" className="nav-link">
                   Food
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/health"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'health' });
-                    this.props.settings(this.state.type, this.state.lang);
-                  }}
-                >
+                <Link to="/health" className="nav-link">
                   Health
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/politics"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'politics' });
-                    this.props.settings(this.state.type, this.state.lang);
-                  }}
-                >
+                <Link to="/politics" className="nav-link">
                   Politics
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/science"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'science' });
-                    this.props.settings(this.state.type, this.state.lang);
-                  }}
-                >
+                <Link to="/science" className="nav-link">
                   Science
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/sports"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'sports' });
-                    this.props.settings(this.state.type, this.state.lang);
-                  }}
-                >
+                <Link to="/sports" className="nav-link">
                   Sports
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/technology"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'technology' });
-                    this.props.settings(this.state.type, this.state.lang);
-                  }}
-                >
+                <Link to="/technology" className="nav-link">
                   Technology
-                </link>
+                </Link>
               </li>
               <li className="nav-item">
-                <link
-                  to="/world"
-                  className="nav-link"
-                  onClick={() => {
-                    this.setState({ type: 'world' });
-                    this.props.settings(this.state.type, this.state.lang);
-                  }}
-                >
+                <Link to="/world" className="nav-link">
                   World
-                </link>
+                </Link>
               </li>
             </ul>
           </div>

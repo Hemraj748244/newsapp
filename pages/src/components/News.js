@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewsItem from './NewsItem';
 import Spinner from './Spinner';
+import { useParams } from 'react-router-dom';
 
 export default class News extends Component {
   checkDisabled = false;
@@ -8,7 +9,7 @@ export default class News extends Component {
     this.setState({ loading: true });
     let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
       this.props.language
-    }&category=${this.props.category}&page=${this.state.page + 1}`;
+    }&category=${this.state.category}&page=${this.state.page + 1}`;
     let data = await fetch(url);
     let parsedData = await data.json();
 
@@ -17,6 +18,7 @@ export default class News extends Component {
       articles: parsedData.results,
       nextPage: parsedData.nextPage,
       loading: false,
+      category: this.props.category,
     });
   };
 
@@ -24,7 +26,7 @@ export default class News extends Component {
     this.setState({ loading: true });
     let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
       this.props.language
-    }&category=${this.props.category}&page=${this.state.page + 1}`;
+    }&category=${this.state.category}&page=${this.state.page + 1}`;
     let data = await fetch(url);
     let parsedData = await data.json();
 
@@ -33,6 +35,7 @@ export default class News extends Component {
       articles: parsedData.results,
       nextPage: parsedData.nextPage,
       loading: false,
+      category: this.props.category,
     });
   };
 
@@ -43,6 +46,7 @@ export default class News extends Component {
       loading: false,
       page: 1,
       nextPage: 1,
+      category: 'top',
     };
   }
 
@@ -50,7 +54,7 @@ export default class News extends Component {
     this.setState({ loading: true });
     let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
       this.props.language
-    }&category=${this.props.category}&page=${this.state.page + 1}`;
+    }&category=${this.state.category}&page=${this.state.page + 1}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({
@@ -58,6 +62,7 @@ export default class News extends Component {
       totalresults: parsedData.totalResults,
       nextPage: parsedData.nextPage,
       loading: false,
+      category: this.props.category,
     });
     console.log(parsedData.results.length);
   }
@@ -109,4 +114,13 @@ export default class News extends Component {
       </div>
     );
   }
+}
+
+export function News2(props) {
+  let parameter = useParams();
+  return (
+    <div>
+      <News category={parameter} />
+    </div>
+  );
 }
