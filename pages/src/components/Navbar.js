@@ -28,19 +28,20 @@ export default class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <span
+                <link
+                  to="/"
                   className="nav-link active"
-                  aria-current="page"
                   onClick={() => {
                     this.setState({ type: 'top' });
                     this.props.settings(this.state.type, this.state.lang);
                   }}
                 >
-                  Home
-                </span>
+                  Top Headlines
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/business"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'business' });
@@ -49,10 +50,11 @@ export default class Navbar extends Component {
                   }}
                 >
                   Business
-                </span>
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/entertainment"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'entertainment' });
@@ -60,10 +62,11 @@ export default class Navbar extends Component {
                   }}
                 >
                   Entertainment
-                </span>
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/environment"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'environment' });
@@ -72,10 +75,11 @@ export default class Navbar extends Component {
                   }}
                 >
                   Environment
-                </span>
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/food"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'food' });
@@ -83,10 +87,11 @@ export default class Navbar extends Component {
                   }}
                 >
                   Food
-                </span>
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/health"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'health' });
@@ -94,10 +99,11 @@ export default class Navbar extends Component {
                   }}
                 >
                   Health
-                </span>
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/politics"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'politics' });
@@ -105,10 +111,11 @@ export default class Navbar extends Component {
                   }}
                 >
                   Politics
-                </span>
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/science"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'science' });
@@ -116,10 +123,11 @@ export default class Navbar extends Component {
                   }}
                 >
                   Science
-                </span>
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/sports"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'sports' });
@@ -127,10 +135,11 @@ export default class Navbar extends Component {
                   }}
                 >
                   Sports
-                </span>
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/technology"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'technology' });
@@ -138,10 +147,11 @@ export default class Navbar extends Component {
                   }}
                 >
                   Technology
-                </span>
+                </link>
               </li>
               <li className="nav-item">
-                <span
+                <link
+                  to="/world"
                   className="nav-link"
                   onClick={() => {
                     this.setState({ type: 'world' });
@@ -149,7 +159,7 @@ export default class Navbar extends Component {
                   }}
                 >
                   World
-                </span>
+                </link>
               </li>
             </ul>
           </div>
