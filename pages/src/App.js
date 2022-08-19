@@ -4,24 +4,11 @@ import News from './components/News';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      category: 'top',
-      language: 'en',
-    };
-  }
-  handleSetting = (cate, lang) => {
-    this.setState({
-      category: cate,
-      language: lang,
-    });
-  };
   render() {
     return (
       <div>
         <Router>
-          <Navbar settings={this.handleSetting} />
+          <Navbar />
           <Routes>
             <Route
               key="top"

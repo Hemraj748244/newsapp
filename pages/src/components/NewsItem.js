@@ -1,11 +1,11 @@
- import React, { Component } from 'react';
+import React, { Component } from 'react';
 
 export default class NewsItem extends Component {
   render() {
-    let { title, description, imageUrl, newsUrl } = this.props;
+    let { title, description, imageUrl, newsUrl, changes } = this.props;
 
     return (
-      <div className="card my-2" style={{ width: '18rem' }}>
+      <div className="card my-2 " style={{ textAlign: 'center' }} key={changes}>
         <img
           src={imageUrl}
           className="card-img-top"
@@ -16,6 +16,7 @@ export default class NewsItem extends Component {
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{description}</p>
+          <p>2022-08-19 13:13:15</p>
           <a
             href={newsUrl}
             target="_blank"
