@@ -85,7 +85,7 @@ export default class News extends Component {
       <div className="container my-3">
         <h2 className="text-center">
           {this.props.category.charAt(0).toUpperCase() +
-            this.props.category.slice(1)}
+            this.props.category.slice(1)}{' '}
           News
         </h2>
         {this.state.loading && <Spinner />}
