@@ -47,8 +47,24 @@ export default class News extends Component {
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    if (this.props.category !== prevProps.category) {
+    console.log(this.props.language + ' - ' + prevProps.language);
+    if (
+      this.props.category !== prevProps.category 
+    ) {
       console.log(this.props.category);
+      this.setState({ loading: true });
+      let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
+        this.props.language
+      }&category=${this.props.category}&page=${this.state.page + 1}`;
+      let data = await fetch(url);
+      let parsedData = await data.json();
+      this.setState({
+        articles: parsedData.results,
+        totalresults: parsedData.totalResults,
+        nextPage: parsedData.nextPage,
+        loading: false,
+      });
+    }else if ( this.props.language !== prevProps.language){
       this.setState({ loading: true });
       let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
         this.props.language
@@ -103,6 +119,9 @@ export default class News extends Component {
                     }
                     newsUrl={article.link}
                     changes={this.props.category}
+                    author={article.creator ?? 'Anonmous'}
+                    time={article.pubDate}
+                    source={article.source_id}
                   />
                 </div>
               );

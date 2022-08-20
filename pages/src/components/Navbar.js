@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 export default class Navbar extends Component {
+  handleClick = (ll, id) => {
+    this.props.setLang(ll);
+  };
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -81,6 +84,42 @@ export default class Navbar extends Component {
                 </Link>
               </li>
             </ul>
+            <div
+              class="btn-toolbar"
+              role="toolbar"
+              aria-label="Toolbar with button groups"
+            >
+              <div
+                class="btn-group btn-group-sm d-flex "
+                role="group"
+                aria-label="Large button group"
+              >
+                <button
+                  id="hindi"
+                  type="button"
+                  class="btn btn-outline-primary active"
+                  onClick={() => this.handleClick('hi', 'hindi')}
+                >
+                  Hindi(अ)
+                </button>
+                <button
+                  id="english"
+                  type="button"
+                  class="btn btn-outline-primary"
+                  onClick={() => this.handleClick('en', 'english')}
+                >
+                  English(A)
+                </button>
+                <button
+                  id="bengali"
+                  type="button"
+                  class="btn btn-outline-primary"
+                  onClick={() => this.handleClick('bn', 'bengali')}
+                >
+                  Bengali(ক)
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
