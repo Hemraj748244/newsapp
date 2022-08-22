@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 export default class Navbar extends Component {
   handleClick = (ll, id) => {
     this.props.setLang(ll);
+    if (id !== 'hindi') {
+      document.getElementById('hindi').classList.remove('active');
+    }
   };
   render() {
     return (

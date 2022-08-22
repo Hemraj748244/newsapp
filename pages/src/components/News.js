@@ -4,36 +4,57 @@ import Spinner from './Spinner';
 
 export default class News extends Component {
   checkDisabled = false;
-  handleNext = async () => {
+  updateNews = async () => {
     this.setState({ loading: true });
-    let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
-      this.props.language
-    }&category=${this.props.category}&page=${this.state.page + 1}`;
+    let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
     let data = await fetch(url);
     let parsedData = await data.json();
 
     this.setState({
-      page: this.state.page + 1,
       articles: parsedData.results,
       nextPage: parsedData.nextPage,
       loading: false,
     });
   };
 
-  handlePrev = async () => {
-    this.setState({ loading: true });
-    let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
-      this.props.language
-    }&category=${this.props.category}&page=${this.state.page + 1}`;
-    let data = await fetch(url);
-    let parsedData = await data.json();
+  handleNext = async () => {
+    this.updateNews();
+    this.setState({
+      page: this.state.page + 1,
+    });
+    // this.setState({ loading: true });
+    // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
+    //   this.props.language
+    // }&category=${this.props.category}&page=${this.state.page + 1}`;
+    // let data = await fetch(url);
+    // let parsedData = await data.json();
 
+    // this.setState({
+    //   page: this.state.page + 1,
+    //   articles: parsedData.results,
+    //   nextPage: parsedData.nextPage,
+    //   loading: false,
+    // });
+  };
+
+  handlePrev = async () => {
+    this.updateNews();
     this.setState({
       page: this.state.page - 1,
-      articles: parsedData.results,
-      nextPage: parsedData.nextPage,
-      loading: false,
     });
+    // this.setState({ loading: true });
+    // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
+    //   this.props.language
+    // }&category=${this.props.category}&page=${this.state.page + 1}`;
+    // let data = await fetch(url);
+    // let parsedData = await data.json();
+
+    // this.setState({
+    //   page: this.state.page - 1,
+    //   articles: parsedData.results,
+    //   nextPage: parsedData.nextPage,
+    //   loading: false,
+    // });
   };
 
   constructor(props) {
@@ -48,53 +69,63 @@ export default class News extends Component {
 
   async componentDidUpdate(prevProps, prevState) {
     console.log(this.props.language + ' - ' + prevProps.language);
-    if (
-      this.props.category !== prevProps.category 
-    ) {
-      console.log(this.props.category);
-      this.setState({ loading: true });
-      let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
-        this.props.language
-      }&category=${this.props.category}&page=${this.state.page + 1}`;
-      let data = await fetch(url);
-      let parsedData = await data.json();
+    if (this.props.category !== prevProps.category) {
+      this.updateNews();
       this.setState({
-        articles: parsedData.results,
-        totalresults: parsedData.totalResults,
-        nextPage: parsedData.nextPage,
-        loading: false,
+        page: this.state.page + 1,
       });
-    }else if ( this.props.language !== prevProps.language){
-      this.setState({ loading: true });
-      let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
-        this.props.language
-      }&category=${this.props.category}&page=${this.state.page + 1}`;
-      let data = await fetch(url);
-      let parsedData = await data.json();
+      // console.log(this.props.category);
+      // this.setState({ loading: true });
+      // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
+      //   this.props.language
+      // }&category=${this.props.category}&page=${this.state.page + 1}`;
+      // let data = await fetch(url);
+      // let parsedData = await data.json();
+      // this.setState({
+      //   articles: parsedData.results,
+
+      //   nextPage: parsedData.nextPage,
+      //   loading: false,
+      // });
+    } else if (this.props.language !== prevProps.language) {
+      this.updateNews();
       this.setState({
-        articles: parsedData.results,
-        totalresults: parsedData.totalResults,
-        nextPage: parsedData.nextPage,
-        loading: false,
+        page: this.state.page + 1,
       });
+      // this.setState({ loading: true });
+      // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
+      //   this.props.language
+      // }&category=${this.props.category}&page=${this.state.page + 1}`;
+      // let data = await fetch(url);
+      // let parsedData = await data.json();
+      // this.setState({
+      //   articles: parsedData.results,
+
+      //   nextPage: parsedData.nextPage,
+      //   loading: false,
+      // });
     }
   }
 
   async componentDidMount() {
-    console.log(this.props.category);
-    this.setState({ loading: true });
-
-    let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
-      this.props.language
-    }&category=${this.props.category}&page=${this.state.page + 1}`;
-    let data = await fetch(url);
-    let parsedData = await data.json();
+    this.updateNews();
     this.setState({
-      articles: parsedData.results,
-      totalresults: parsedData.totalResults,
-      nextPage: parsedData.nextPage,
-      loading: false,
+      page: this.state.page + 1,
     });
+    // console.log(this.props.category);
+    // this.setState({ loading: true });
+
+    // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
+    //   this.props.language
+    // }&category=${this.props.category}&page=${this.state.page + 1}`;
+    // let data = await fetch(url);
+    // let parsedData = await data.json();
+    // this.setState({
+    //   articles: parsedData.results,
+
+    //   nextPage: parsedData.nextPage,
+    //   loading: false,
+    // });
   }
   render() {
     return (
