@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import News from './components/News';
+import News2 from './components/News2';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -26,7 +27,7 @@ export default class App extends Component {
             <Route
               key="top"
               path="/"
-              element={<News category="top" language={this.state.language} />}
+              element={<News2 category="top" language={this.state.language} />}
             />
             <Route
               key="business"
