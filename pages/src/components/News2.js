@@ -142,43 +142,45 @@ export default class News extends Component {
   };
   render() {
     return (
-  <div>
-        <h2 className="text-center">
-          {this.props.category.charAt(0).toUpperCase() +
-            this.props.category.slice(1)}{' '}
-          News
-        </h2>
-        {this.state.loading && <Spinner />}
-        <InfiniteScroll
-          dataLength={this.state.articles.length}
-          next={this.fetchMoreData}
-          hasMore={true}
-          loader={<Spinner />}
-        >
-              <div className="container my-3">
+      <>
+        <div className="container my-3">
           <div className="row">
-            {!this.state.loading &&
-              this.state.articles.map((article) => {
-                return (
-                  <div className="col-md-4" key={article.link}>
-                    <NewsItem
-                      title={article.title}
-                      description={article.description}
-                      imageUrl={
-                        article.image_url ??
-                        'http://bafn.ca/wp-content/uploads/2017/10/news.gif'
-                      }
-                      newsUrl={article.link}
-                      changes={this.props.category}
-                      author={article.creator ?? 'Anonmous'}
-                      time={article.pubDate}
-                      source={article.source_id}
-                    />
-                  </div>
-                );
-              })}
+            <h2 className="text-center">
+              {this.props.category.charAt(0).toUpperCase() +
+                this.props.category.slice(1)}{' '}
+              News
+            </h2>
+            {this.state.loading && <Spinner />}
+
+            <InfiniteScroll
+              dataLength={this.state.articles.length}
+              next={this.fetchMoreData}
+              hasMore={true}
+              loader={<Spinner />}
+            >
+              {!this.state.loading &&
+                this.state.articles.map((article) => {
+                  return (
+                    <div className="col-md-4" key={article.link}>
+                      <NewsItem
+                        title={article.title}
+                        description={article.description}
+                        imageUrl={
+                          article.image_url ??
+                          'http://bafn.ca/wp-content/uploads/2017/10/news.gif'
+                        }
+                        newsUrl={article.link}
+                        changes={this.props.category}
+                        author={article.creator ?? 'Anonmous'}
+                        time={article.pubDate}
+                        source={article.source_id}
+                      />
+                    </div>
+                  );
+                })}
+            </InfiniteScroll>
           </div>
-        </InfiniteScroll>
+        </div>
         <div className="row">
           <div className="col-sm-6" style={{ textAlign: 'left' }}>
             <button
@@ -202,8 +204,7 @@ export default class News extends Component {
             </button>
           </div>
         </div>
-      </div>
-  
+      </>
     );
   }
 }
