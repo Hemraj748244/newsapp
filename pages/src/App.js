@@ -7,6 +7,7 @@ import LoadingBar from 'react-top-loading-bar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default class App extends Component {
+  apiKey = process.env.REACT_APP_MY_API_KEY;
   constructor() {
     super();
     this.state = {
@@ -41,6 +42,7 @@ export default class App extends Component {
               path="/"
               element={
                 <News2
+                  apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="top"
                   language={this.state.language}
