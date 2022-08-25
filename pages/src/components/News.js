@@ -70,10 +70,11 @@ export default class News extends Component {
   async componentDidUpdate(prevProps, prevState) {
     console.log(this.props.language + ' - ' + prevProps.language);
     if (this.props.category !== prevProps.category) {
-      this.updateNews();
       this.setState({
-        page: this.state.page + 1,
+        page: 1,
       });
+      this.updateNews();
+
       // console.log(this.props.category);
       // this.setState({ loading: true });
       // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
@@ -88,10 +89,10 @@ export default class News extends Component {
       //   loading: false,
       // });
     } else if (this.props.language !== prevProps.language) {
+      // this.setState({
+      //   page: this.state.page + 1,
+      // });
       this.updateNews();
-      this.setState({
-        page: this.state.page + 1,
-      });
       // this.setState({ loading: true });
       // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${
       //   this.props.language
@@ -146,7 +147,7 @@ export default class News extends Component {
                     description={article.description}
                     imageUrl={
                       article.image_url ??
-                      'http://bafn.ca/wp-content/uploads/2017/10/news.gif'
+                      'https://st.depositphotos.com/1016225/2107/i/600/depositphotos_21071341-stock-photo-newspaper.jpg'
                     }
                     newsUrl={article.link}
                     changes={this.props.category}

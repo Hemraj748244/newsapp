@@ -88,19 +88,19 @@ export default class Navbar extends Component {
               </li>
             </ul>
             <div
-              class="btn-toolbar"
+              className="btn-toolbar"
               role="toolbar"
               aria-label="Toolbar with button groups"
             >
               <div
-                class="btn-group btn-group-sm d-flex "
+                className="btn-group btn-group-sm d-flex "
                 role="group"
                 aria-label="Large button group"
               >
                 <button
                   id="hindi"
                   type="button"
-                  class="btn btn-outline-primary active"
+                  className="btn btn-outline-primary active"
                   onClick={() => this.handleClick('hi', 'hindi')}
                 >
                   Hindi(अ)
@@ -108,7 +108,7 @@ export default class Navbar extends Component {
                 <button
                   id="english"
                   type="button"
-                  class="btn btn-outline-primary"
+                  className="btn btn-outline-primary"
                   onClick={() => this.handleClick('en', 'english')}
                 >
                   English(A)
@@ -116,7 +116,7 @@ export default class Navbar extends Component {
                 <button
                   id="bengali"
                   type="button"
-                  class="btn btn-outline-primary"
+                  className="btn btn-outline-primary"
                   onClick={() => this.handleClick('bn', 'bengali')}
                 >
                   Bengali(ক)
