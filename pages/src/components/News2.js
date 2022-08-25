@@ -2,20 +2,25 @@ import React, { Component } from 'react';
 import NewsItem from './NewsItem';
 import Spinner from './Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import LoadingBar from 'react-top-loading-bar';
 export default class News extends Component {
   checkDisabled = false;
   updateNews = async () => {
-    // let url = `https://newsdata.io/api/1/news?apikey=pub_10572e47d558cfdf1aa29e8a9cdfb78ee56a5&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
-    let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
-    let data = await fetch(url);
-    let parsedData = await data.json();
+    this.props.setProgress(10);
 
+    let url = `https://newsdata.io/api/1/news?apikey=pub_10572e47d558cfdf1aa29e8a9cdfb78ee56a5&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
+    // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
+    let data = await fetch(url);
+    this.props.setProgress(30);
+    let parsedData = await data.json();
+    this.props.setProgress(60);
     this.setState({
       articles: parsedData.results,
       nextPage: parsedData.nextPage,
       totalResults: parsedData.totalResults,
       loading: false,
     });
+    this.props.setProgress(100);
   };
 
   handleNext = async () => {
@@ -111,9 +116,9 @@ export default class News extends Component {
   }
 
   async componentDidMount() {
-    this.setState({
-      page: this.state.page + 1,
-    });
+    // this.setState({
+    //   page: this.state.page + 1,
+    // });
     this.updateNews();
     // console.log(this.props.category);
     // this.setState({ loading: true });
@@ -132,13 +137,13 @@ export default class News extends Component {
   }
   fetchMoreData = async () => {
     // a fake async api call like which sends
-    // 20 more records in 1.5 secs
-    if (this.state.articles.length === this.state.totalResults) {
-      this.setState({
-        hasMore: false,
-      });
-      return;
-    }
+    // // 20 more records in 1.5 secs
+    // if (this.state.articles.length === this.state.totalResults) {
+    //   this.setState({
+    //     hasMore: false,
+    //   });
+    //   return;
+    // }
     this.setState({ loading: true, page: this.state.page + 1 });
 
     // let url = `https://newsdata.io/api/1/news?apikey=pub_10572e47d558cfdf1aa29e8a9cdfb78ee56a5&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
