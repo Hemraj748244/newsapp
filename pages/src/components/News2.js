@@ -10,6 +10,7 @@ export default class News extends Component {
 
     let url = `https://newsdata.io/api/1/news?apikey=${this.props.apiKey}&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
     // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
+    this.props.setProgress(20);
     let data = await fetch(url);
     this.props.setProgress(30);
     let parsedData = await data.json();
