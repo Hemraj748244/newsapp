@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const Navbar = () => {
+const Navbar = (props) => {
   const handleClick = (ll, id) => {
-    this.props.setLang(ll);
+    props.setLang(ll);
     if (id !== 'hindi') {
       document.getElementById('hindi').classList.remove('active');
     }
@@ -101,7 +101,7 @@ const Navbar = () => {
                 id="hindi"
                 type="button"
                 className="btn btn-outline-primary active"
-                onClick={() => this.handleClick('hi', 'hindi')}
+                onClick={() => handleClick('hi', 'hindi')}
               >
                 Hindi(अ)
               </button>
@@ -109,7 +109,7 @@ const Navbar = () => {
                 id="english"
                 type="button"
                 className="btn btn-outline-primary"
-                onClick={() => this.handleClick('en', 'english')}
+                onClick={() => handleClick('en', 'english')}
               >
                 English(A)
               </button>
@@ -117,7 +117,7 @@ const Navbar = () => {
                 id="bengali"
                 type="button"
                 className="btn btn-outline-primary"
-                onClick={() => this.handleClick('bn', 'bengali')}
+                onClick={() => handleClick('bn', 'bengali')}
               >
                 Bengali(ক)
               </button>
