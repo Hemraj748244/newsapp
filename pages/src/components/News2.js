@@ -7,10 +7,10 @@ const News2 = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-
   const [totalResults, setTotalResults] = useState(0);
 
   const updateNews = async () => {
+    setLoading(true);
     props.setProgress(10);
 
     let url = `https://newsdata.io/api/1/news?apikey=${props.apiKey}&language=${props.language}&category=${props.category}&page=${page}`;
@@ -20,15 +20,22 @@ const News2 = (props) => {
     let data = await fetch(url);
     props.setProgress(30);
     let parsedData = await data.json();
-    props.setProgress(60);
+    if (parsedData.totalResults === 0) {
+      props.setProgress(100);
+      setLoading(false);
+      return;
+    }
+    props.setProgress(40);
     setArticles(parsedData.results);
-
+    props.setProgress(60);
     setTotalResults(parsedData.totalResults);
+    props.setProgress(80);
     setLoading(false);
     props.setProgress(100);
   };
 
   useEffect(() => {
+    setPage(1);
     updateNews();
   }, [props.category]);
 

@@ -88,7 +88,14 @@ export default class App extends Component {
             <Route
               key="food"
               path="/food"
-              element={<News2 category="food" language={this.state.language} />}
+              element={
+                <News2
+                  apiKey={this.apiKey}
+                  setProgress={this.setProgress}
+                  category="food"
+                  language={this.state.language}
+                />
+              }
             />
             <Route
               key="health"
