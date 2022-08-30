@@ -26,13 +26,7 @@ const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link
-                to="/"
-                className="nav-link active"
-                onClick={() => {
-                  console.log('Top Headlines');
-                }}
-              >
+              <Link to="/" className="nav-link active">
                 Top Headlines
               </Link>
             </li>
