@@ -46,7 +46,7 @@ const NewsRepl = (props) => {
 
   useEffect(() => {
     document.title = `${capitalizeFirstLetter(props.category)} - Apna Samachar`;
-    updateNews();
+    updateNews(page);
     // eslint-disable-next-line
   }, [props.language]);
 
