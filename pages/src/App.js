@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
-import News from './components/News';
-import News2 from './components/News2';
+import NewsRepl from './components/NewsRepl';
+
 import LoadingBar from 'react-top-loading-bar';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default class App extends Component {
-  apiKey = process.env.REACT_APP_MY_API_KEY;
+  apiKey = process.env.REACT_APP_MY_API_KEY2;
   constructor() {
     super();
     this.state = {
@@ -41,7 +41,7 @@ export default class App extends Component {
               key="top"
               path="/"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="top"
@@ -53,7 +53,7 @@ export default class App extends Component {
               key="business"
               path="/business"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="business"
@@ -65,7 +65,7 @@ export default class App extends Component {
               key="entertainment"
               path="entertainment"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="entertainment"
@@ -77,7 +77,7 @@ export default class App extends Component {
               key="environment"
               path="environment"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="environment"
@@ -89,7 +89,7 @@ export default class App extends Component {
               key="food"
               path="/food"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="food"
@@ -101,7 +101,7 @@ export default class App extends Component {
               key="health"
               path="/health"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="health"
@@ -113,7 +113,7 @@ export default class App extends Component {
               key="politics"
               path="/politics"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="politics"
@@ -125,7 +125,7 @@ export default class App extends Component {
               key="science"
               path="/science"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="science"
@@ -137,7 +137,7 @@ export default class App extends Component {
               key="sports"
               path="/sports"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="sports"
@@ -149,7 +149,7 @@ export default class App extends Component {
               key="technology"
               path="/technology"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="technology"
@@ -161,7 +161,7 @@ export default class App extends Component {
               key="world"
               path="/world"
               element={
-                <News2
+                <NewsRepl
                   apiKey={this.apiKey}
                   setProgress={this.setProgress}
                   category="world"

@@ -10,12 +10,11 @@ const News2 = (props) => {
   const [totalResults, setTotalResults] = useState(0);
 
   const updateNews = async () => {
-    setLoading(true);
     props.setProgress(10);
 
     let url = `https://newsdata.io/api/1/news?apikey=${props.apiKey}&language=${props.language}&category=${props.category}&page=${page}`;
     // let url = `https://newsdata.io/api/1/news?apikey=pub_10231dd994c7bcbf3086ea912817c056f10bc&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
-
+    setLoading(true);
     props.setProgress(20);
     let data = await fetch(url);
     props.setProgress(30);
@@ -35,32 +34,36 @@ const News2 = (props) => {
   };
 
   useEffect(() => {
-    setPage(1);
     updateNews();
-  }, [props.category]);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
+    setPage(1);
     updateNews();
-  }, [props.language]);
+    // eslint-disable-next-line
+  }, [props.category, props.language]);
 
   const fetchMoreData = async () => {
     setLoading(true);
-    setPage(page + 1);
+
     // let url = `https://newsdata.io/api/1/news?apikey=pub_10572e47d558cfdf1aa29e8a9cdfb78ee56a5&language=${this.props.language}&category=${this.props.category}&page=${this.state.page}`;
-    let url = `https://newsdata.io/api/1/news?apikey=${props.apiKey}&language=${props.language}&category=${props.category}&page=${page}`;
+    let url = `https://newsdata.io/api/1/news?apikey=${props.apiKey}&language=${
+      props.language
+    }&category=${props.category}&page=${page + 1}`;
     let data = await fetch(url);
     let parsedData = await data.json();
-
+    setPage(page + 1);
     setArticles(articles.concat(parsedData.results));
     setLoading(false);
   };
 
   return (
     <div className="container my-2">
-      <h2 className="text-center">
+      <h2 className="text-center" style={{ marginTop: '70px' }}>
         {props.category.charAt(0).toUpperCase() + props.category.slice(1)} News
       </h2>
-
+      {loading && <Spinner />}
       <InfiniteScroll
         dataLength={articles.length}
         next={fetchMoreData}
@@ -69,10 +72,12 @@ const News2 = (props) => {
         className="row"
         style={{ height: 'auto', overflow: 'hidden' }}
       >
-        {loading && <Spinner />}
         {articles.map((article) => {
           return (
-            <div className="col-md-4" key={article.link + article.pubDate}>
+            <div
+              className="col-md-4"
+              key={article.link + article.pubDate + article.title}
+            >
               <NewsItem
                 title={article.title}
                 description={article.description}
